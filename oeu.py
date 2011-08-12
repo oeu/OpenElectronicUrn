@@ -992,13 +992,13 @@ def application(environ,start_response):
     start_response('200 OK',[('Content-type','text/plain')])
     return [getd(reg.v.group(1) if reg(re.search(r'd=(201\d\-\d{2}\-\d{2})$',urllib.unquote(environ['QUERY_STRING']))) else '')] 
 
-def update():
-    """ update file digest if changed"""
-    with open(__file__) as f:
-        l = list(f)
-        if '#%s\n'%hashlib.sha1('%s'%l[:-1]).hexdigest() != l[-1]:
-            open(__file__,'a').write('#%s\n'%hashlib.sha1('%s'%l).hexdigest())
-            print '...digest updated'
+#def update():
+#    """ update file digest if changed"""
+#    with open(__file__) as f:
+#        l = list(f)
+#        if '#%s\n'%hashlib.sha1('%s'%l[:-1]).hexdigest() != l[-1]:
+#            open(__file__,'a').write('#%s\n'%hashlib.sha1('%s'%l).hexdigest())
+#            print '...digest updated'
 
 def get_list_voters(n):
     li = {}
